@@ -28,5 +28,12 @@ class Employee(AbstractUser):
     position = models.ForeignKey('employees.Role', on_delete=models.CASCADE, verbose_name='Должность')
     hiring_date = models.DateField(verbose_name='Дата приёма на работу', auto_now_add=True)
     salary = models.PositiveIntegerField(verbose_name='Размер заработной платы')
-    supervisor = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='Начальник')
+    supervisor = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='Начальник',
+                                   related_name='coworkers')
 
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        verbose_name = 'Сотрудник'
+        verbose_name_plural = 'Сотрудники'
