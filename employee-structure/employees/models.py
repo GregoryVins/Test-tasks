@@ -29,7 +29,7 @@ class Employee(AbstractUser):
     hiring_date = models.DateField(verbose_name='Дата приёма на работу', auto_now_add=True)
     salary = models.PositiveIntegerField(verbose_name='Размер заработной платы')
     supervisor = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='Начальник',
-                                   related_name='coworkers')
+                                   related_name='coworkers', blank=True, null=True)
 
     def __str__(self):
         return self.username
