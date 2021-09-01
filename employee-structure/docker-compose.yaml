@@ -25,7 +25,7 @@ services:
       - PGDB_PASSWORD=project
       - PGDB_HOST=db
       - PGDB_PORT=5432
-    command: bash -c "python3 manage.py migrate && python3 manage.py && python3 manage.py loaddata data.yaml && python3 manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python3 manage.py migrate && python3 manage.py && python3 manage.py generate_employees && python3 manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     depends_on:
