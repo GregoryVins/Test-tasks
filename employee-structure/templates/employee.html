@@ -11,15 +11,17 @@
 </head>
 <body>
 <div class="container">
+<p class="h3">Employee structure</p>
+<span class="text-muted">Общее кол-во сотрудников: {{ employees_count }}</span>
     {% for employee in employees %}
-        <div>
-            <b>{{ employee.get_full_name }}</b>&emsp;<span class="text-muted">должность: </span>{{ employee.position }}
+        <div class="mt-5">
+            <span class="text-muted">должность: </span>{{ employee.position }}&emsp;<b>{{ employee.get_full_name }}</b>
             {% for coworker in employee.coworkers.all %}
                 <div class="mx-5">
-                    <b>{{ coworker.get_full_name }}</b>&emsp;<span class="text-muted">должность: </span>{{ coworker.position }}
+                    <span class="text-muted">должность: </span>{{ coworker.position }}&emsp;<b>{{ coworker.get_full_name }}</b>
                     {% for subordinate in coworker.coworkers.all %}
                         <div class="mx-5">
-                            <b>{{ subordinate.get_full_name }}</b>&emsp;<span class="text-muted">должность: </span>{{ subordinate.position }}
+                            <span class="text-muted">должность: </span>{{ subordinate.position }}&emsp;<b>{{ subordinate.get_full_name }}</b>
                         </div>
                     {% endfor %}
                 </div>

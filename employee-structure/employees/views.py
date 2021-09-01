@@ -13,4 +13,5 @@ class EmployeeListView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(EmployeeListView, self).get_context_data(**kwargs)
         context['employees'] = Employee.objects.filter(supervisor=None)
+        context['employees_count'] = Employee.objects.all().count()
         return context
