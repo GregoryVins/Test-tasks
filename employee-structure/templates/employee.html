@@ -15,13 +15,22 @@
 <span class="text-muted">Общее кол-во сотрудников: {{ employees_count }}</span>
     {% for employee in employees %}
         <div class="mt-5">
-            <span class="text-muted">должность: </span>{{ employee.position }}&emsp;<b>{{ employee.get_full_name }}</b>
+            <span class="text-muted">должность: </span>{{ employee.position }}&emsp;
+            <b>{{ employee.get_full_name }}</b>&emsp;
+            <span class="text-muted">дата приёма на работу: </span> {{ employee.hiring_date|date:"d-M-y" }}&emsp;
+            <span class="text-muted">уровень зп:</span> {{ employee.salary }}
             {% for coworker in employee.coworkers.all %}
                 <div class="mx-5">
-                    <span class="text-muted">должность: </span>{{ coworker.position }}&emsp;<b>{{ coworker.get_full_name }}</b>
+                    <span class="text-muted">должность: </span>{{ coworker.position }}&emsp;
+                    <b>{{ coworker.get_full_name }}</b>&emsp;
+                    <span class="text-muted">дата приёма на работу: </span> {{ coworker.hiring_date|date:"d-M-y" }}&emsp;
+                    <span class="text-muted">уровень зп:</span> {{ coworker.salary }}
                     {% for subordinate in coworker.coworkers.all %}
                         <div class="mx-5">
-                            <span class="text-muted">должность: </span>{{ subordinate.position }}&emsp;<b>{{ subordinate.get_full_name }}</b>
+                            <span class="text-muted">должность: </span>{{ subordinate.position }}&emsp;
+                            <b>{{ subordinate.get_full_name }}</b>&emsp;
+                            <span class="text-muted">дата приёма на работу: </span> {{ subordinate.hiring_date|date:"d-M-y" }}&emsp;
+                            <span class="text-muted">уровень зп:</span> {{ subordinate.salary }}
                         </div>
                     {% endfor %}
                 </div>
