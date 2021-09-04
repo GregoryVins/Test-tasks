@@ -1,0 +1,13 @@
+{% for employee in employees %}
+    <div>
+        <span class="text-muted">должность: </span>{{ employee.position }}&emsp;
+        <b>{{ employee.get_full_name }}</b>&emsp;
+        <span class="text-muted">дата приёма на работу: </span> {{ employee.hiring_date|date:"d-M-y" }}&emsp;
+        <span class="text-muted">уровень зп:</span> {{ employee.salary }}
+        {% if employee.coworkers.all|length %}
+            <div class="mx-5">
+                {% include 'includes/inc__coworkers.html' with employees=employee.coworkers.all %}
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}
