@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <p class="h3">Employee structure</p>
+        <span class="text-muted">Общее кол-во сотрудников: {{ employees_count }}</span>
+        <div class="mt-5">
+
+            {% for subdivision in subdivisions %}
+                <p>{{ forloop.counter0 }}: {{ subdivision }}</p>
+                <div class="mt-5">
+                    {% include 'includes/inc__coworkers.html' with employees=subdivision.users.all %}
+                </div>
+            {% endfor %}
+
+        </div>
+        {#        <div class="mt-5">#}
+        {#            {% include 'includes/inc__coworkers.html' %}#}
+        {#        </div>#}
+    </div>
+
+{% endblock %}

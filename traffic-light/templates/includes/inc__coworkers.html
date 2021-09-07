@@ -1,6 +1,6 @@
 {% for employee in employees %}
     <div class="accordion">
-        <h2 class="accordion-header">
+        <h2>
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#{{ employee.position }}{{ forloop.counter }}" aria-expanded="false">
                 <span class="text-muted">должность: </span>{{ employee.position }}&emsp;

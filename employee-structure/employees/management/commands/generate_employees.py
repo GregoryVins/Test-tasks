@@ -52,6 +52,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         with transaction.atomic():
             self.create_owner()
-            self.create_administrators()
+            self.get_or_create_administrators()
             self.create_employees()
             self.stdout.write(self.style.SUCCESS('Successfully'))
