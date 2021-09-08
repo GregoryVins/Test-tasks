@@ -25,3 +25,19 @@ Django 3+, Python 3.5+, база на свое усмотрение.
 Готовое задание, необходимо разместить Github/Bitbucket
  
 2. Вышлите примеры готового кода
+
+
+Запуск сервера
+--------------
+
+```
+$ docker compose up
+```
+
+или
+
+```
+$ pip install -r requirements.txt
+$ python manage.py create_users --settings=core.local
+$ python manage.py runserver --settings=core.local
+```

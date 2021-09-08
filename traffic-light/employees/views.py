@@ -8,8 +8,6 @@ class EmployeeListView(ListView):
     """
     Отображение списка сотрудников.
     """
-    model = Employee
-    paginate_by = 5
     template_name = 'employee.html'
     queryset = Employee.objects.all()
 
