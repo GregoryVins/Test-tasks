@@ -41,5 +41,6 @@ class Employee(AbstractUser):
         verbose_name = 'Сотрудник'
         verbose_name_plural = 'Сотрудники'
 
+    @property
     def get_object_list(self):
         return self.coworkers.all()

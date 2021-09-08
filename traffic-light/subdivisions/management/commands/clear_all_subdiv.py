@@ -8,5 +8,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         Subdivision.objects.all().delete()
-        self.stdout.write(self.style.SUCCESS('Successfully'))
+        self.stdout.write(self.style.SUCCESS('Successfully deleted all subdivisions'))
 
