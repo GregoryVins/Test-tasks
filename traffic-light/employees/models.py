@@ -9,7 +9,7 @@ class Role(models.Model):
     Роль, должность сотрудника.
     """
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False, db_index=True)
-    name = models.CharField(max_length=255, verbose_name='Роль')
+    name = models.CharField(max_length=255, verbose_name='Роль', unique=True)
 
     def __str__(self):
         return self.name
@@ -40,3 +40,6 @@ class Employee(AbstractUser):
     class Meta:
         verbose_name = 'Сотрудник'
         verbose_name_plural = 'Сотрудники'
+
+    def get_object_list(self):
+        return self.coworkers.all()

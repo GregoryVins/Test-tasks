@@ -9,5 +9,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         Employee.objects.all().exclude(is_superuser=True).delete()
-        Subdivision.objects.all().delete()
         self.stdout.write(self.style.SUCCESS('Successfully'))

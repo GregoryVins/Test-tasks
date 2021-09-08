@@ -7,18 +7,14 @@
         <p class="h3">Employee structure</p>
         <span class="text-muted">Общее кол-во сотрудников: {{ employees_count }}</span>
         <div class="mt-5">
-
-            {% for subdivision in subdivisions %}
-                <p>{{ forloop.counter0 }}: {{ subdivision }}</p>
+            {% for sub in subdivisions %}
+                {{ sub }}
                 <div class="mt-5">
-                    {% include 'includes/inc__coworkers.html' with employees=subdivision.users.all %}
+                    {% include 'includes/inc__coworkers.html' with employees=sub.get_object_list.all %}
                 </div>
             {% endfor %}
 
         </div>
-        {#        <div class="mt-5">#}
-        {#            {% include 'includes/inc__coworkers.html' %}#}
-        {#        </div>#}
     </div>
 
 {% endblock %}

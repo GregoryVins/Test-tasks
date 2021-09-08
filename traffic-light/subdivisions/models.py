@@ -16,3 +16,6 @@ class Subdivision(models.Model):
     class Meta:
         verbose_name = 'Подразделение'
         verbose_name_plural = 'Подразделения'
+
+    def get_object_list(self):
+        return self.users.filter(supervisor=None)
