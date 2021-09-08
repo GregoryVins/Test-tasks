@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:11
+    container_name: "db"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=project
+      - POSTGRES_PASSWORD=project
+      - POSTGRES_DB=project
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U project" ]
+
+  server:
+    container_name: "server"
+    build:
+      context: .
+    environment:
+      - PGDB_NAME=project
+      - PGDB_USER=project
+      - PGDB_PASSWORD=project
+      - PGDB_HOST=db
+      - PGDB_PORT=5432
+    command: bash -c "python3 manage.py migrate && python3 manage.py && python3 manage.py clear_all_subdiv && python3 manage.py clear_all_users_exclude_admins && python3 manage.py create_users && python3 manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/code
+    depends_on:
+      - db
+    links:
+      - db
+
+volumes:
+  pgdata:

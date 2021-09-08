@@ -1,13 +1,25 @@
 {% for employee in employees %}
-    <div>
-        <span class="text-muted">должность: </span>{{ employee.position }}&emsp;
-        <b>{{ employee.get_full_name }}</b>&emsp;
-        <span class="text-muted">дата приёма на работу: </span> {{ employee.hiring_date|date:"d-M-y" }}&emsp;
-        <span class="text-muted">уровень зп:</span> {{ employee.salary }}
-        {% if employee.coworkers.all|length %}
-            <div class="mx-5">
-                {% include 'includes/inc__coworkers.html' with employees=employee.coworkers.all %}
-            </div>
-        {% endif %}
+    <div class="accordion">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#{{ employee.position }}{{ forloop.counter }}" aria-expanded="false">
+                <span class="text-muted">должность: </span>{{ employee.position }}&emsp;
+                <b>{{ employee.get_full_name }}</b>&emsp;
+                <span class="text-muted">дата приёма на работу: </span>
+                {{ employee.hiring_date|date:"d-M-y" }}&emsp;
+                <span class="text-muted">уровень зп:</span> {{ employee.salary }}
+            </button>
+        </h2>
+
+{#        {% if employee.coworkers.all|length %}#}
+{#            <div class="mx-5">#}
+{#                <div id="{{ employee.position }}{{ forloop.counter }}" class="accordion-collapse collapse">#}
+{#                    <div class="accordion-body">#}
+{#                        {% include 'includes/inc__coworkers.html' with employees=employee.coworkers.all %}#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endif %}#}
     </div>
+
 {% endfor %}
