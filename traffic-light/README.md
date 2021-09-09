@@ -41,3 +41,8 @@ $ pip install -r requirements.txt
 $ python manage.py create_users --settings=core.local
 $ python manage.py runserver --settings=core.local
 ```
+
+***TO DO:***
+
+- перенести логику из шаблонов в модель/вью
+- оптимизировать скорость загрузки страницы
