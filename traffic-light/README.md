@@ -38,6 +38,7 @@ $ docker compose up
 
 ```
 $ pip install -r requirements.txt
+$ python manage.py migrate --settings=core.local
 $ python manage.py create_users --settings=core.local
 $ python manage.py runserver --settings=core.local
 ```
