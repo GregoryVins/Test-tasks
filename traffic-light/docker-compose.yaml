@@ -16,9 +16,9 @@ services:
       test: [ "CMD-SHELL", "pg_isready -U project" ]
 
   server:
-    container_name: "server"
+    container_name: "test-server"
     build:
-      context: .
+      context: ./server
     environment:
       - PGDB_NAME=project
       - PGDB_USER=project
@@ -29,11 +29,21 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./:/code
+      - ./server/:/code
     depends_on:
       - db
     links:
       - db
+
+  client:
+    container_name: "test-client"
+    build: .
+    ports:
+      - "4200:4200"
+    links:
+      - server
+    volumes:
+      - ./client/src:/client/src
 
 volumes:
   pgdata:

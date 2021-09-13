@@ -1,6 +1,7 @@
 <div class="mx-2 accordion-collapse form-control">
   <div *ngFor="let obj of data" class="accordion-body" (click)="mainService.changeItemInSelectedList(obj.id)">
-    <b>{{obj.username}}</b> <span class="text-muted">Зарплата сотрудника: </span>{{obj.salary}}
+    <span class="text-muted">{{obj.position.name}} </span> <b>{{obj.username}}</b> &emsp;
+    <span class="text-muted">Зарплата сотрудника: </span>{{obj.salary}}
     <app-widget *ngIf="mainService.checkItemInSelectedItems(obj.id)" [userId]="obj.id"></app-widget>
   </div>
 </div>

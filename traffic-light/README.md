@@ -44,6 +44,13 @@ $ python manage.py create_users --settings=core.local
 $ python manage.py runserver --settings=core.local
 ```
 
+Запуск клиента
+```
+$ cd client
+$ npm i
+$ npm start
+```
+
 ***TO DO:***
 
 - перенести логику из шаблонов в модель/вью

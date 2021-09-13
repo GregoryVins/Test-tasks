@@ -9,7 +9,8 @@
     <div class="mx-2 accordion-collapse"
          *ngIf="mainService.checkItemInSelectedItems(sub.id) && sub.owners">
       <div *ngFor="let item of sub.owners" class="accordion-body" (click)="mainService.changeItemInSelectedList(item.id)">
-        <b>{{item.username}}</b> <span class="text-muted">Зарплата сотрудника: </span>{{item.salary}}
+        <span class="text-muted">{{item.position.name}}: </span><b>{{item.username}} </b> &emsp;
+        <span class="text-muted">Зарплата сотрудника: </span>{{item.salary}}
         <app-widget *ngIf="mainService.checkItemInSelectedItems(item.id)" [userId]="item.id"></app-widget>
       </div>
     </div>
