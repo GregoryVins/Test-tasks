@@ -1,0 +1,33 @@
+{% for sub in init_data %}
+    <h2>
+        {% if sub.get_object_list.all|length %}
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#{{ sub.username }}{{ forloop.counter }}" aria-expanded="false">
+                <span class="text-muted">должность: </span>{{ sub.position }}&emsp;
+                <b>{{ sub.get_full_name }}</b>&emsp;
+                <span class="text-muted">дата приёма на работу: </span>
+                {{ sub.hiring_date|date:"d-M-y" }}&emsp;
+                <span class="text-muted">уровень зп:</span> {{ sub.salary }}
+            </button>
+        {% else %}
+            <div class="form-control">
+                <span class="text-muted">должность: </span>{{ sub.position }}&emsp;
+                <b>{{ sub.get_full_name }}</b>&emsp;
+                <span class="text-muted">дата приёма на работу: </span>
+                {{ sub.hiring_date|date:"d-M-y" }}&emsp;
+                <span class="text-muted">уровень зп:</span> {{ sub.salary }}
+            </div>
+        {% endif %}
+    </h2>
+
+    {% if sub.get_object_list.all|length %}
+        <div class="mx-5">
+            <div id="{{ sub.username }}{{ forloop.counter }}" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    {% include 'includes/inc__coworkers.html' with init_data=sub.get_object_list %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endfor %}

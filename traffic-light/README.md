@@ -30,13 +30,14 @@ Django 3+, Python 3.5+, база на свое усмотрение.
 Запуск сервера
 --------------
 
+Запуск серверной части с помощью docker
 ```
 $ docker compose up
 ```
 
-или
-
+Запуск вручную
 ```
+$ cd server
 $ pip install -r requirements.txt
 $ python manage.py migrate --settings=core.local
 $ python manage.py create_users --settings=core.local
