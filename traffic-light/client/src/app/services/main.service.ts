@@ -26,17 +26,11 @@ export class MainService {
     return this.httpClient.get('http://127.0.0.1:8000/subdivs')
   }
 
-  addItemInSelectedList(item: string): void {
+  changeItemInSelectedList(item: string): void {
     this.selectedItems.push(item);
   }
 
-  deleteItemInSelectedList(item: any): void {}
-
   checkItemInSelectedItems(item: string): boolean {
     return !!this.selectedItems.find(id => id == item)
-  }
-
-  showMe(data: any): void {
-    console.log(data);
   }
 }
