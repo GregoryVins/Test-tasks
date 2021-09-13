@@ -1,0 +1,6 @@
+<div class="mx-2 accordion-collapse">
+  <div *ngFor="let obj of data" class="accordion-body" (click)="mainService.addItemInSelectedList(obj.id)">
+    <b>{{obj.username}}</b> <span class="text-muted">Зарплата сотрудника: </span>{{obj.salary}}
+    <app-widget *ngIf="mainService.checkItemInSelectedItems(obj.id)" [userId]="obj.id"></app-widget>
+  </div>
+</div>
