@@ -37,9 +37,9 @@ services:
 
   client:
     container_name: "test-client"
-    build: .
+    build: ./client
     ports:
-      - "4200:4200"
+      - "8080:8080"
     links:
       - server
     volumes:
