@@ -1,6 +1,13 @@
 Запуск сервера
 --------------
 
+С помощью докера
+
+```
+docker compose up
+```
+
+или вручную
 ```
 pip install requirements.txt
 python manage.py migrate --settings=core.local

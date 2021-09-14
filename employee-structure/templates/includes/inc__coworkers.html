@@ -11,15 +11,15 @@
             </button>
         </h2>
 
-{#        {% if employee.coworkers.all|length %}#}
-{#            <div class="mx-5">#}
-{#                <div id="{{ employee.username }}{{ forloop.counter }}" class="accordion-collapse collapse">#}
-{#                    <div class="accordion-body">#}
-{#                        {% include 'includes/inc__coworkers.html' with employees=employee.coworkers.all %}#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        {% endif %}#}
+        {% if employee.coworkers.all|length %}
+            <div class="mx-5">
+                <div id="{{ employee.username }}{{ forloop.counter }}" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        {% include 'includes/inc__coworkers.html' with employees=employee.coworkers.all %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 
 {% endfor %}

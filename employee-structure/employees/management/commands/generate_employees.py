@@ -49,9 +49,14 @@ class Command(BaseCommand):
                                     salary=150,
                                     supervisor=choice(administrators))
 
+    def clear_data(self):
+        Role.objects.all().delete()
+        Employee.objects.all().delete()
+
     def handle(self, *args, **options):
         with transaction.atomic():
+            self.clear_data()
             self.create_owner()
-            self.get_or_create_administrators()
+            self.create_administrators()
             self.create_employees()
             self.stdout.write(self.style.SUCCESS('Successfully'))
