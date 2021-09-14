@@ -1,3 +1,13 @@
+Запуск сервера
+--------------
+
+```
+pip install requirements.txt
+python manage.py migrate --settings=core.local
+python manage.py generate_employees --settings=core.local
+python manage.py runserver --settings=core.local
+```
+
 employee structure
 ----------------------
 *Тестовое задание на позицию Python Junior Developer*
